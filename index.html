@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የኢትዮጵያ ሥርዓተ-ትምህርት 6ኛ ክፍል ሒሳብ ማጠቃለያ ፈተና | Grade 6 Math Exam</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Sans Ethiopic & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for crisp UI icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .ethiopic-font {
+            font-family: 'Noto Sans Ethiopic', 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for grid pallet */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-indigo-100 selection:text-indigo-800">
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-md shadow-indigo-200">
+                    <i class="fa-solid fa-calculator text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-bold text-slate-800 leading-tight">6ኛ ክፍል ሒሳብ ማጠቃለያ ፈተና</h1>
+                    <p class="text-xs text-slate-500 font-medium">Ethiopian Curriculum • 80 Questions Standard Exam</p>
+                </div>
+            </div>
+
+            <!-- Header Status Indicators -->
+            <div id="headerStats" class="hidden items-center space-x-3 sm:space-x-6 text-sm font-semibold">
+                <div class="flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700">
+                    <i class="fa-regular fa-clock text-indigo-600"></i>
+                    <span id="timerDisplay">02:30:00</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-2 bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg border border-indigo-100">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>የተመለሱ፡ <span id="answeredHeaderCount">0</span>/80</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- STEP 1: Registration View -->
+        <section id="registrationSection" class="max-w-2xl mx-auto my-6 bg-white rounded-2xl shadow-xl shadow-slate-100 border border-slate-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-blue-600 p-8 text-white text-center relative overflow-hidden">
+                <div class="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md mb-4 shadow-inner">
+                    <i class="fa-solid fa-graduation-cap text-3xl"></i>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">የተማሪ መለያና መግቢያ ቅጽ</h2>
+                <p class="text-indigo-100 mt-2 text-sm sm:text-base font-normal">Ethiopian Grade 6 Mathematics Interactive Final Assessment</p>
+            </div>
+
+            <form id="startExamForm" class="p-6 sm:p-8 space-y-6">
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl">
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-circle-info text-amber-600 mt-0.5 text-lg mr-3"></i>
+                        <div class="text-xs sm:text-sm text-amber-900 space-y-1">
+                            <p class="font-bold">አስፈላጊ መመሪያዎች (Instructions):</p>
+                            <p>• ፈተናው 80 ጥያቄዎችን የያዘ ሲሆን የተሰጠው ጠቅላላ ጊዜ <strong>2፡30 ሰዓት</strong> ነው።</p>
+                            <p>• አንዴ ምርጫ ከወሰዱ በኋላ መልሱ <strong>አይቀየርም (Irreversible Instant Feedback)</strong>፤ ወዲያውኑ ትክክለኛነቱና ማብራሪያው ይታያል።</p>
+                            <p>• ፈተናውን እንዳጠናቀቁ ውጤትዎ በኢሜይል በራስ-ሰር ለፈታኙ አስተማሪ (<strong>mesayferedegn2@gmail.com</strong>) ይላካል።</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label for="studentName" class="block text-sm font-semibold text-slate-700 mb-1">
+                            የተማሪው/ዋ ሙሉ ስም (Full Name) <span class="text-rose-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <input type="text" id="studentName" required placeholder="ምሳሌ፡ ዮናስ አለሙ ከበደ"
+                                class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm font-medium transition duration-150">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="studentId" class="block text-sm font-semibold text-slate-700 mb-1">
+                                የተማሪ መለያ ቁጥር (ID Number) <span class="text-rose-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-id-card"></i>
+                                </div>
+                                <input type="text" id="studentId" required placeholder="ምሳሌ፡ ETH-G6-0924"
+                                    class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm font-medium transition duration-150">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="studentSection" class="block text-sm font-semibold text-slate-700 mb-1">
+                                ክፍል / ሴክሽን (Section) <span class="text-rose-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-users-rectangle"></i>
+                                </div>
+                                <input type="text" id="studentSection" required placeholder="ምሳሌ፡ 6ኛ A ወይም 6B"
+                                    class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm font-medium transition duration-150">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full mt-4 bg-indigo-600 hover:bg-indigo-700 active:scale-[0.99] text-white py-3.5 px-6 rounded-xl font-bold text-base shadow-lg shadow-indigo-200 hover:shadow-indigo-300 transition duration-150 flex items-center justify-center space-x-2">
+                    <span>ፈተናውን ጀምር (Start Quiz Now)</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+        </section>
+
+        <!-- STEP 2: Active Exam Container -->
+        <section id="examSection" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Question Content Card (Left / Main) -->
+            <div class="lg:col-span-8 space-y-5">
+                
+                <!-- Topic & Breadcrumb Header -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center space-x-2">
+                        <span id="chapterBadge" class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            ምዕራፍ 1
+                        </span>
+                        <span id="questionCategory" class="text-xs sm:text-sm font-medium text-slate-600">
+                            የሙሉ ቁጥሮች ተካፋይነት
+                        </span>
+                    </div>
+                    <div class="text-xs font-semibold text-slate-500 flex items-center space-x-1.5">
+                        <i class="fa-regular fa-bookmark text-indigo-500"></i>
+                        <span>ጥያቄ <span id="currentQNum" class="text-indigo-600 font-bold text-base">1</span> ከ 80</span>
+                    </div>
+                </div>
+
+                <!-- Main Question Card -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
+                    
+                    <div class="space-y-2">
+                        <div class="flex items-start space-x-3">
+                            <span id="questionNumberTag" class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm">
+                                1
+                            </span>
+                            <h3 id="questionText" class="text-lg sm:text-xl font-bold text-slate-800 leading-snug pt-0.5">
+                                Loading question...
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Choice Options -->
+                    <div id="optionsContainer" class="space-y-3 pt-2">
+                        <!-- Options injected dynamically -->
+                    </div>
+
+                    <!-- Instant Explanation Panel (Revealed on response) -->
+                    <div id="explanationBox" class="hidden mt-6 rounded-xl border p-5 transition duration-300">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <i id="explanationIcon" class="fa-solid fa-circle-check text-lg"></i>
+                            <h4 id="explanationTitle" class="font-bold text-sm uppercase tracking-wider">ዝርዝር ማብራሪያ (Detailed Explanation)</h4>
+                        </div>
+                        <div class="space-y-2 text-sm leading-relaxed">
+                            <p id="explanationAmharic" class="text-slate-800 font-medium"></p>
+                            <p id="explanationEnglish" class="text-slate-600 text-xs sm:text-sm italic border-t border-slate-200/60 pt-2"></p>
+                        </div>
+                    </div>
+
+                    <!-- Exam Controls (Back, Skip, Next, Submit) -->
+                    <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                        <button id="btnPrev" type="button" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-50 hover:text-slate-900 transition flex items-center space-x-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-arrow-left text-xs"></i>
+                            <span>ወደ ኋላ (Back)</span>
+                        </button>
+
+                        <div class="flex items-center space-x-3">
+                            <button id="btnSkip" type="button" class="px-4 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-semibold text-sm transition flex items-center space-x-1.5">
+                                <i class="fa-solid fa-forward text-xs"></i>
+                                <span>ዝለል (Skip)</span>
+                            </button>
+
+                            <button id="btnNext" type="button" class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700 shadow-sm transition flex items-center space-x-2">
+                                <span>ቀጣይ (Next)</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Navigation & Quick Pallet (Right Sidebar) -->
+            <div class="lg:col-span-4 space-y-5">
+                
+                <!-- Candidate Info Card -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-11 h-11 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 font-bold text-lg">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <h4 id="sidebarStudentName" class="font-bold text-slate-800 text-sm truncate">ተማሪ ስም</h4>
+                            <p id="sidebarStudentMeta" class="text-xs text-slate-500 truncate">ID: --- | Sec: ---</p>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="mt-4 pt-4 border-t border-slate-100">
+                        <div class="flex justify-between text-xs font-semibold text-slate-600 mb-1.5">
+                            <span>የፈተናው ሂደት (Progress)</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                            <div id="progressBar" class="bg-gradient-to-r from-indigo-500 to-emerald-500 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-[11px] text-slate-500 mt-2 font-medium">
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> ትክክል: <strong id="correctCounter" class="text-emerald-700">0</strong></span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span> ስህተት: <strong id="wrongCounter" class="text-rose-700">0</strong></span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-300 inline-block"></span> ያልተመለሰ: <strong id="unansweredCounter" class="text-slate-700">80</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 80-Item Grid Pallet -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">የጥያቄዎች ማውጫ (Question Navigator)</h4>
+                        <span class="text-[11px] text-slate-400">ጠቅላላ፡ 80</span>
+                    </div>
+
+                    <div id="questionGrid" class="grid grid-cols-8 sm:grid-cols-10 lg:grid-cols-8 gap-1.5 max-h-[340px] overflow-y-auto pr-1">
+                        <!-- 80 buttons generated by JS -->
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-100 grid grid-cols-3 gap-1 text-[10px] text-slate-500 font-medium text-center">
+                        <div class="flex items-center justify-center space-x-1">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                            <span>ትክክል</span>
+                        </div>
+                        <div class="flex items-center justify-center space-x-1">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                            <span>ስህተት</span>
+                        </div>
+                        <div class="flex items-center justify-center space-x-1">
+                            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+                            <span>አሁን ያለበት</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Submission Trigger Button -->
+                <button id="btnFinishExam" type="button" class="w-full bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white py-3.5 px-4 rounded-xl font-bold text-sm shadow-md shadow-emerald-200 transition duration-150 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-flag-checkered"></i>
+                    <span>ፈተናውን አጠቃልልና አስረክብ (Submit Exam)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- STEP 3: Results & Teacher Notification Dashboard -->
+        <section id="resultsSection" class="hidden max-w-4xl mx-auto my-6 space-y-6">
+            
+            <!-- Result Summary Card -->
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+                <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-8 text-white text-center relative">
+                    <span id="resultBadge" class="inline-block px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 mb-3">
+                        ፈተናው በተሳካ ሁኔታ ተጠናቋል!
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black">የፈተና ውጤት ማጠቃለያ</h2>
+                    <p class="text-slate-300 text-sm mt-1">Official Student Performance Breakdown</p>
+
+                    <div class="mt-8 flex justify-center">
+                        <div class="relative w-44 h-44 rounded-full bg-white/10 backdrop-blur-md flex flex-col items-center justify-center border-4 border-indigo-400/40 shadow-inner">
+                            <span class="text-xs uppercase font-semibold text-indigo-200">የተገኘው ውጤት</span>
+                            <div class="text-5xl font-black tracking-tight" id="scoreDisplay">0</div>
+                            <span class="text-xs text-slate-300 font-medium">ከ 80 (Out of 80)</span>
+                            <span id="scorePercentage" class="text-sm font-bold text-emerald-400 mt-1">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student & Stats Detail Ribbon -->
+                <div class="p-6 sm:p-8 space-y-6 bg-slate-50 border-t border-slate-200">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                            <p class="text-xs text-slate-500 font-medium">የተማሪው ስም (Student)</p>
+                            <h4 id="resStudentName" class="text-base font-bold text-slate-800 mt-0.5">-</h4>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                            <p class="text-xs text-slate-500 font-medium">መለያ ቁጥርና ክፍል (ID & Section)</p>
+                            <h4 id="resStudentMeta" class="text-base font-bold text-slate-800 mt-0.5">-</h4>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
+                            <p class="text-xs text-slate-500 font-medium">የወሰደው ጊዜ (Time Taken)</p>
+                            <h4 id="resTimeTaken" class="text-base font-bold text-slate-800 mt-0.5">-</h4>
+                        </div>
+                    </div>
+
+                    <!-- Breakdown Metrics -->
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-center">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                            <p class="text-2xl font-black text-emerald-800 mt-1" id="resCorrectCount">0</p>
+                            <p class="text-xs font-semibold text-emerald-600">ትክክለኛ መልሶች</p>
+                        </div>
+                        <div class="bg-rose-50 border border-rose-200 p-4 rounded-xl text-center">
+                            <i class="fa-solid fa-circle-xmark text-rose-600 text-xl"></i>
+                            <p class="text-2xl font-black text-rose-800 mt-1" id="resWrongCount">0</p>
+                            <p class="text-xs font-semibold text-rose-600">የተሳሳቱ መልሶች</p>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl text-center">
+                            <i class="fa-solid fa-circle-question text-amber-600 text-xl"></i>
+                            <p class="text-2xl font-black text-amber-800 mt-1" id="resUnansweredCount">0</p>
+                            <p class="text-xs font-semibold text-amber-600">ያልተመለሱ</p>
+                        </div>
+                    </div>
+
+                    <!-- Chapter-by-Chapter Performance Analysis -->
+                    <div class="bg-white p-5 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-sm text-slate-800 mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-pie text-indigo-600"></i>
+                            የምዕራፎች የውጤት ትንተና (Chapter-wise Breakdown)
+                        </h4>
+                        <div class="space-y-3 text-xs sm:text-sm">
+                            <div>
+                                <div class="flex justify-between font-medium text-slate-700 mb-1">
+                                    <span>ምዕራፍ 1፡ የሙሉ ቁጥሮች ተካፋይነት (ጥያቄ 1-28)</span>
+                                    <span id="ch1Stats">0/28</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-2">
+                                    <div id="ch1Bar" class="bg-indigo-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between font-medium text-slate-700 mb-1">
+                                    <span>ምዕራፍ 2፡ ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች (ጥያቄ 29-54)</span>
+                                    <span id="ch2Stats">0/26</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-2">
+                                    <div id="ch2Bar" class="bg-indigo-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between font-medium text-slate-700 mb-1">
+                                    <span>ምዕራፍ 3፡ ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች (ጥያቄ 55-80)</span>
+                                    <span id="ch3Stats">0/26</span>
+                                </div>
+                                <div class="w-full bg-slate-100 rounded-full h-2">
+                                    <div id="ch3Bar" class="bg-indigo-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Teacher Notification & Email Dispatch Section -->
+                    <div class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white rounded-xl p-6 space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/30 flex items-center justify-center text-indigo-300 flex-shrink-0">
+                                <i class="fa-solid fa-envelope-circle-check text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-white">ውጤቱን ለመምህሩ ያስረክቡ (Teacher Direct Submission)</h4>
+                                <p class="text-xs text-indigo-200 mt-0.5">የፈተናዎን ዝርዝር ውጤት በቀጥታ ወደ አስተማሪው ኢሜይል ይላኩ፦ <strong>mesayferedegn2@gmail.com</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                            <button id="btnSendEmailDirect" class="flex-1 bg-emerald-500 hover:bg-emerald-600 active:scale-[0.99] text-white py-3 px-4 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>ውጤቱን በኢሜይል ላክ (Send Score via Email)</span>
+                            </button>
+                            <button id="btnCopyReport" class="sm:w-auto bg-white/10 hover:bg-white/20 active:scale-[0.99] text-white py-3 px-4 rounded-xl font-semibold text-sm transition flex items-center justify-center space-x-2">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>ሪፖርቱን ኮፒ አድርግ (Copy Text)</span>
+                            </button>
+                        </div>
+                        <p id="emailStatusMsg" class="hidden text-xs text-emerald-300 font-medium"></p>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 pt-4">
+                        <button id="btnReviewAll" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-100 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                            <span>ጥያቄዎችንና ማብራሪያዎችን ከልስ (Review Questions)</span>
+                        </button>
+
+                        <button id="btnPrintReport" class="px-5 py-2.5 rounded-xl bg-slate-800 text-white font-semibold text-sm hover:bg-slate-900 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-print"></i>
+                            <span>የውጤት ወረቀት አትም / Print PDF</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 font-medium">
+        <p>© Ethiopian Educational Curriculum Standard Assessment • Grade 6 Mathematics (80 Items Evaluation Platform)</p>
+    </footer>
+
+    <!-- Notification Toast Modal (No alert() used) -->
+    <div id="toastNotification" class="fixed bottom-5 right-5 max-w-sm bg-slate-900 text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center space-x-3 transform transition-all duration-300 translate-y-24 opacity-0 pointer-events-none z-50">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <div id="toastMessage" class="text-xs sm:text-sm font-medium">Notification message</div>
+    </div>
+
+    <!-- Complete 80-Item Database and Core Application Logic -->
+    <script>
+        // Official 80-question item bank rigorously verified from the input curriculum assessment
+        const questionsData = [
+            // ■ ምዕራፍ 1 (1 - 28)
+            {
+                id: 1, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከሚከተሉት ቁጥሮች ውስጥ ተጋማሽ (Even number) የሆነው የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "21,478" },
+                    { letter: "ለ", text: "45,851" },
+                    { letter: "ሐ", text: "69,733" },
+                    { letter: "መ", text: "98,477" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "አንድ ቁጥር ተጋማሽ የሚሆነው የአንድ ቤት ሆሄው 0, 2, 4, 6 ወይም 8 ሲሆን ነው። የ 21,478 የአንድ ቤት ሆሄ 8 ስለሆነ ተጋማሽ ቁጥር ነው።",
+                explanationEnglish: "An integer is even if its last digit (units place) is divisible by 2 (0, 2, 4, 6, 8). The units digit of 21,478 is 8, which is even."
+            },
+            {
+                id: 2, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከሚከተሉት ቁጥሮች ውስጥ ኢ-ተጋማሽ (Odd number) የሆነው የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "3,730" },
+                    { letter: "ለ", text: "8,502" },
+                    { letter: "ሐ", text: "5,524" },
+                    { letter: "መ", text: "4,009" }
+                ],
+                correct: "መ",
+                explanationAmharic: "ኢ-ተጋማሽ ቁጥር ማለት የአንድ ቤት ሆሄው 1, 3, 5, 7 ወይም 9 የሆነ ነው። የ 4,009 የአንድ ቤት ሆሄ 9 ስለሆነ ኢ-ተጋማሽ ነው።",
+                explanationEnglish: "An odd number has an ending digit of 1, 3, 5, 7, or 9. 4,009 ends in 9, thus it is an odd number."
+            },
+            {
+                id: 3, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ማንኛውም ኢ-ተጋማሽ ሙሉ ቁጥር ለ 2 ሲካፈል ቀሪው ምንጊዜም ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "0" },
+                    { letter: "ለ", text: "1" },
+                    { letter: "ሐ", text: "2" },
+                    { letter: "መ", text: "3" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "ማንኛውም ኢ-ተጋማሽ ቁጥር በ 2 ሲካፈል ቀሪው ሁልጊዜ 1 ነው። ተጋማሽ ቁጥር ከሆነ ቀሪው 0 ይሆናል።",
+                explanationEnglish: "Any odd integer can be written in the form 2k + 1. Dividing by 2 always yields a remainder of 1."
+            },
+            {
+                id: 4, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "አንድ ሙሉ ቁጥር በ 3 ያለ ቀሪ የሚካፈለው መቼ ነው?",
+                options: [
+                    { letter: "ሀ", text: "የአንድ ቤት ሆሄው 3 ሲሆን" },
+                    { letter: "ለ", text: "የቁጥሩ የአንድና የአስር ቤት ሆሄ በ3 ሲካፈል" },
+                    { letter: "ሐ", text: "የቁጥሩ ሆሄያት ድምር በ3 ሲካፈል" },
+                    { letter: "መ", text: "የቁጥሩ የአንድ ቤት ሆሄ ኢ-ተጋማሽ ሲሆን" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "የ 3 የተካፋይነት ህግ፡ የቁጥሩ ሆሄያት ድምር ለ 3 ያለ ቀሪ የሚካፈል ከሆነ ቁጥሩ በ 3 ይካፈላል።",
+                explanationEnglish: "Divisibility rule for 3: An integer is divisible by 3 if and only if the sum of all its digits is divisible by 3."
+            },
+            {
+                id: 5, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከሚከተሉት ቁጥሮች ውስጥ በ 3 ያለ ቀሪ የሚካፈለው የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "20,648" },
+                    { letter: "ለ", text: "53,672" },
+                    { letter: "ሐ", text: "16,013" },
+                    { letter: "መ", text: "100,095" }
+                ],
+                correct: "መ",
+                explanationAmharic: "ለ 100,095 የሆሄያቱ ድምር 1 + 0 + 0 + 0 + 9 + 5 = 15 ሲሆን 15 ለ 3 ያለ ቀሪ ይካፈላል (15 ÷ 3 = 5)።",
+                explanationEnglish: "For 100,095, digit sum = 1+0+0+0+9+5 = 15. Since 15 is divisible by 3, 100,095 is divisible by 3."
+            },
+            {
+                id: 6, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ቁጥር 52,324 በ 4 ያለ ቀሪ ይካፈላል፤ ምክንያቱም፡",
+                options: [
+                    { letter: "ሀ", text: "በቁጥሩ የአስርና የአንድ ቤት ሆሄያት የሚመሰረተው 24 በ 4 ስለሚካፈል" },
+                    { letter: "ለ", text: "የሆሄያቱ ድምር 16 ስለሆነ" },
+                    { letter: "ሐ", text: "የአንድ ቤት ሆሄው 4 ስለሆነ" },
+                    { letter: "መ", text: "ቁጥሩ ተጋማሽ ስለሆነ" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "የ 4 የተካፋይነት ህግ የመጨረሻዎቹ ሁለት ሆሄያት (የአስርና የአንድ ቤት) ቁጥር በ 4 መካፈል አለበት። 24 ÷ 4 = 6 ስለሆነ ነው።",
+                explanationEnglish: "Divisibility rule for 4 states that the number formed by its last two digits must be divisible by 4. Here 24 ÷ 4 = 6."
+            },
+            {
+                id: 7, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከሚከተሉት ቁጥሮች ውስጥ በ 4 ያለ ቀሪ የማይካፈለው የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "416" },
+                    { letter: "ለ", text: "630,058" },
+                    { letter: "ሐ", text: "1,024" },
+                    { letter: "መ", text: "5,100" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "የ 630,058 የመጨረሻ ሁለት ሆሄያት 58 ናቸው። 58 ለ 4 ሲካፈል 14 ደርሶ 2 ቀሪ አለው፤ ስለዚህ በ 4 አይካፈልም።",
+                explanationEnglish: "The last two digits of 630,058 are 58. 58 ÷ 4 = 14 remainder 2, which is not divisible by 4."
+            },
+            {
+                id: 8, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "አንድ ሙሉ ቁጥር በ 5 ያለ ቀሪ እንዲካፈል የአንድ ቤት ሆሄው መሆን ያለበት፡",
+                options: [
+                    { letter: "ሀ", text: "0 ብቻ" },
+                    { letter: "ለ", text: "5 ብቻ" },
+                    { letter: "ሐ", text: "0 ወይም 5" },
+                    { letter: "መ", text: "ማንኛውም ኢ-ተጋማሽ ቁጥር" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "የ 5 የተካፋይነት ህግ፡ ማንኛውም ሙሉ ቁጥር በ 5 የሚካፈለው የአንድ ቤት ሆሄው 0 ወይም 5 ሲሆን ብቻ ነው።",
+                explanationEnglish: "Divisibility by 5 requires the units digit to end in either 0 or 5."
+            },
+            {
+                id: 9, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "አንድ ሙሉ ቁጥር በ 6 ያለ ቀሪ እንዲካፈል መሟላት ያለበት ቅድመ ሁኔታ የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "በ3 ብቻ መካፈል አለበት" },
+                    { letter: "ለ", text: "የአንድ ቤት ሆሄው 6 መሆን አለበት" },
+                    { letter: "ሐ", text: "የሆሄያቱ ድምር 6 መሆን አለበት" },
+                    { letter: "መ", text: "በ 2 እና በ 3 ያለ ቀሪ መካፈል አለበት" }
+                ],
+                correct: "መ",
+                explanationAmharic: "ቁጥር 6 የ 2 እና የ 3 ብዜት (2 × 3) ስለሆነ አንድ ቁጥር በ 6 እንዲካፈል በ 2ም በ 3ም ያለ ቀሪ መካፈል አለበት።",
+                explanationEnglish: "Since 6 = 2 × 3, a number must be simultaneously divisible by both 2 and 3 to be divisible by 6."
+            },
+            {
+                id: 10, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከሚከተሉት ቁጥሮች ውስጥ በ 6 ያለ ቀሪ የሚካፈለው የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "3462" },
+                    { letter: "ለ", text: "3261" },
+                    { letter: "ሐ", text: "4005" },
+                    { letter: "መ", text: "326108" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "3462 ተጋማሽ ስለሆነ በ 2 ይካፈላል፤ የሆሄያቱ ድምር 3+4+6+2 = 15 በ 3 ይካፈላል። በ 2 እና በ 3 ስለሚካፈል በ 6 ይካፈላል።",
+                explanationEnglish: "3462 is even (divisible by 2) and its digit sum is 3+4+6+2 = 15 (divisible by 3). Thus it is divisible by 6."
+            },
+            {
+                id: 11, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "አንድ ሙሉ ቁጥር በ 8 ያለ ቀሪ የሚካፈለው መቼ ነው?",
+                options: [
+                    { letter: "ሀ", text: "በ2 ሲካፈል ብቻ" },
+                    { letter: "ለ", text: "የመጨረሻዎቹ ሦስት ሆሄያት (የመቶ፣ የአስርና የአንድ ቤት) የሚመሰርቱት ቁጥር በ8 ሲካፈል" },
+                    { letter: "ሐ", text: "የሆሄያቱ ድምር በ8 ሲካፈል" },
+                    { letter: "መ", text: "የመጨረሻዎቹ ሁለት ሆሄያት በ8 ሲካፈሉ" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "የ 8 የተካፋይነት ደንብ የመጨረሻዎቹ ሦስት ሆሄያት የሚመሰርቱት ቁጥር በ 8 ያለ ቀሪ መካፈል ወይም 000 መሆን አለበት።",
+                explanationEnglish: "A number is divisible by 8 if the number formed by its last three digits (hundreds, tens, units) is divisible by 8."
+            },
+            {
+                id: 12, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከሚከተሉት ቁጥሮች ውስጥ በ 8 ያለ ቀሪ የሚካፈለው የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "52,431" },
+                    { letter: "ለ", text: "34,462" },
+                    { letter: "ሐ", text: "40,512" },
+                    { letter: "መ", text: "72,403" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "የ 40,512 የመጨረሻ ሦስት ሆሄያት 512 ናቸው። 512 ÷ 8 = 64 (ያለ ቀሪ ይካፈላል)።",
+                explanationEnglish: "For 40,512, the last three digits are 512. Since 512 ÷ 8 = 64 exactly, 40,512 is divisible by 8."
+            },
+            {
+                id: 13, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከሚከተሉት ቁጥሮች ውስጥ በ 9 ያለ ቀሪ የሚካፈለው የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "72,403" },
+                    { letter: "ለ", text: "100,095" },
+                    { letter: "ሐ", text: "34,362" },
+                    { letter: "መ", text: "89,208" }
+                ],
+                correct: "መ",
+                explanationAmharic: "የ 89,208 ሆሄያት ድምር = 8 + 9 + 2 + 0 + 8 = 27። 27 በ 9 ያለ ቀሪ ስለሚካፈል (27 ÷ 9 = 3) ቁጥሩ በ 9 ይካፈላል።",
+                explanationEnglish: "The digit sum of 89,208 is 8+9+2+0+8 = 27. Since 27 is divisible by 9, 89,208 is divisible by 9."
+            },
+            {
+                id: 14, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "አንድ ሙሉ ቁጥር በ 10 ያለ ቀሪ እንዲካፈል የአንድ ቤት ሆሄው ምን መሆን አለበት?",
+                options: [
+                    { letter: "ሀ", text: "0" },
+                    { letter: "ለ", text: "5" },
+                    { letter: "ሐ", text: "0 ወይም 5" },
+                    { letter: "መ", text: "2" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "አንድ ሙሉ ቁጥር በ 10 ያለ ቀሪ እንዲካፈል የአንድ ቤት ሆሄው 0 ብቻ መሆን አለበት።",
+                explanationEnglish: "A number is divisible by 10 if and only if its units digit is 0."
+            },
+            {
+                id: 15, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ሙሉ ቁጥር 436_57 በ 9 ያለ ቀሪ እንዲካፈል በባዶ ቦታው ላይ መግባት ያለበት ባለአንድ ሆሄ ቁጥር ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "1" },
+                    { letter: "ለ", text: "2" },
+                    { letter: "ሐ", text: "3" },
+                    { letter: "መ", text: "4" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "የሚታወቁት ሆሄያት ድምር 4 + 3 + 6 + 5 + 7 = 25 ነው። ወደሚቀጥለው የ 9 ብዜት (27) ለመድረስ 27 - 25 = 2 ያስፈልጋል።",
+                explanationEnglish: "Sum of known digits = 4+3+6+5+7 = 25. The next multiple of 9 is 27. So missing digit is 27 - 25 = 2."
+            },
+            {
+                id: 16, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "የቁጥር 24 ሙሉ አካፋዮች ብዛት ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "4" },
+                    { letter: "ለ", text: "6" },
+                    { letter: "ሐ", text: "8" },
+                    { letter: "መ", text: "10" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "የ 24 አካፋዮች፡ 1, 2, 3, 4, 6, 8, 12, 24 ሲሆኑ በድምሩ 8 አካፋዮች አሉት።",
+                explanationEnglish: "Factors of 24 are {1, 2, 3, 4, 6, 8, 12, 24}, making a total of 8 positive factors."
+            },
+            {
+                id: 17, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከአንድ የሚበልጥ ሙሉ ቁጥር ተካፋይነቱ በ 1 እና በራሱ በቁጥሩ ብቻ ከሆነ ምን ይባላል?",
+                options: [
+                    { letter: "ሀ", text: "ተተንታኝ ቁጥር" },
+                    { letter: "ለ", text: "ተጋማሽ ቁጥር" },
+                    { letter: "ሐ", text: "ኢ-ተጋማሽ ቁጥር" },
+                    { letter: "መ", text: "ብቸኛ ቁጥር" }
+                ],
+                correct: "መ",
+                explanationAmharic: "ብቸኛ ቁጥር (Prime number) ማለት ሁለት አካፋዮች ብቻ (1 እና እራሱ ቁጥሩ) ያሉት ሙሉ ቁጥር ነው።",
+                explanationEnglish: "A prime number is a natural number greater than 1 that has exactly two distinct factors: 1 and itself."
+            },
+            {
+                id: 18, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከሚከተሉት ውስጥ ትንሹ ብቸኛ ቁጥር (Smallest prime number) የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "2" },
+                    { letter: "ለ", text: "1" },
+                    { letter: "ሐ", text: "3" },
+                    { letter: "መ", text: "0" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "2 ትንሹ ብቸኛ ቁጥር ሲሆን ብቸኛው ተጋማሽ የሆነ ብቸኛ ቁጥርም ጭምር ነው። 1 ብቸኛ ቁጥር አይደለም።",
+                explanationEnglish: "2 is the smallest prime number and the only even prime number. 1 is neither prime nor composite."
+            },
+            {
+                id: 19, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ስለ ሙሉ ቁጥር 1 ትክክለኛ የሆነው አባባል የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "ብቸኛ ቁጥር ነው" },
+                    { letter: "ለ", text: "ብቸኛም ተተንታኝም አይደለም" },
+                    { letter: "ሐ", text: "ተተንታኝ ቁጥር ነው" },
+                    { letter: "መ", text: "ተጋማሽ ቁጥር ነው" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "ቁጥር 1 አንድ አካፋይ ብቻ ስላለው ብቸኛም (ሁለት አካፋይ) ወይም ተተንታኝ (ከ 2 በላይ አካፋይ) አይደለም።",
+                explanationEnglish: "Number 1 has only one positive factor, so it is classified as neither prime nor composite."
+            },
+            {
+                id: 20, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ከሁለት በላይ አካፋዮች ያሉት ሙሉ ቁጥር ምን ተብሎ ይጠራል?",
+                options: [
+                    { letter: "ሀ", text: "ብቸኛ ቁጥር" },
+                    { letter: "ለ", text: "ኢ-ተጋማሽ ቁጥር" },
+                    { letter: "ሐ", text: "ተተንታኝ ቁጥር" },
+                    { letter: "መ", text: "ተጋማሽ ቁጥር" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "ከሁለት በላይ አካፋዮች ያሉት ሙሉ ቁጥር ተተንታኝ ቁጥር (Composite number) ይባላል።",
+                explanationEnglish: "A positive integer that has more than two factors is defined as a composite number."
+            },
+            {
+                id: 21, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "የቁጥር 32 ብቸኛ ትንትን (Prime factorization) በዕርቢ ሲገለጽ የቱ ነው?",
+                options: [
+                    { letter: "ሀ", text: "2^4" },
+                    { letter: "ለ", text: "2 × 16" },
+                    { letter: "ሐ", text: "4^2 × 2" },
+                    { letter: "መ", text: "2^5" }
+                ],
+                correct: "መ",
+                explanationAmharic: "32 = 2 × 2 × 2 × 2 × 2 = 2^5 ነው።",
+                explanationEnglish: "32 factored into primes is 2 × 2 × 2 × 2 × 2 = 2^5."
+            },
+            {
+                id: 22, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "የቁጥር 90 ትክክለኛ የብቸኛ አብዢዎች ትንትን የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "2 × 3^2 × 5" },
+                    { letter: "ለ", text: "2 × 9 × 5" },
+                    { letter: "ሐ", text: "2^2 × 3 × 5" },
+                    { letter: "መ", text: "3 × 6 × 5" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "90 = 2 × 45 = 2 × 3 × 15 = 2 × 3 × 3 × 5 = 2 × 3^2 × 5 ነው።",
+                explanationEnglish: "Prime factorization of 90 = 2 × 3 × 3 × 5 = 2 × 3^2 × 5."
+            },
+            {
+                id: 23, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "የ 12 እና 18 ትልቁ የጋራ አካፋይ (ት.ጋ.አ) ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "2" },
+                    { letter: "ለ", text: "6" },
+                    { letter: "ሐ", text: "3" },
+                    { letter: "መ", text: "36" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "የ 12 አካፋዮች {1,2,3,4,6,12} እና የ 18 አካፋዮች {1,2,3,6,9,18}፤ የጋራ አካፋዮች {1,2,3,6} ሲሆኑ ትልቁ 6 ነው።",
+                explanationEnglish: "Factors of 12 are {1,2,3,4,6,12} and of 18 are {1,2,3,6,9,18}. The Greatest Common Divisor (GCD) is 6."
+            },
+            {
+                id: 24, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ሁለት ሙሉ ቁጥሮች 'ሀ' እና 'ለ' አንጻራዊ ብቸኛ ቁጥሮች (Relatively prime) ከሆኑ ት.ጋ.አ (ሀ፣ ለ) ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "0" },
+                    { letter: "ለ", text: "ሀ × ለ" },
+                    { letter: "ሐ", text: "1" },
+                    { letter: "መ", text: "ሀ + ለ" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "ሁለት ቁጥሮች አንጻራዊ ብቸኛ (Relatively prime / Co-prime) የሚባሉት ብቸኛው የጋራ አካፋያቸው 1 ሲሆን ብቻ ነው (ት.ጋ.አ = 1)።",
+                explanationEnglish: "Two integers are relatively prime if their Greatest Common Divisor (GCD) is 1."
+            },
+            {
+                id: 25, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "የ 6 እና 9 ከዜሮ ውጪ የሆነው ትንሹ የጋራ ብዜት (ት.ጋ.ብ) ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "54" },
+                    { letter: "ለ", text: "36" },
+                    { letter: "ሐ", text: "3" },
+                    { letter: "መ", text: "18" }
+                ],
+                correct: "መ",
+                explanationAmharic: "የ 6 ብዜቶች፡ 6, 12, 18, 24...፤ የ 9 ብዜቶች፡ 9, 18, 27...፤ ትንሹ የጋራ ብዜት 18 ነው።",
+                explanationEnglish: "Multiples of 6: 6, 12, 18... Multiples of 9: 9, 18, 27... The Least Common Multiple (LCM) is 18."
+            },
+            {
+                id: 26, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ለማንኛውም ከዜሮ የተለዩ ሙሉ ቁጥሮች ሀ እና ለ፤ የት.ጋ.ብ(ሀ፣ ለ) እና ት.ጋ.አ(ሀ፣ ለ) ብዜት ከምን ጋር እኩል ነው?",
+                options: [
+                    { letter: "ሀ", text: "ሀ × ለ" },
+                    { letter: "ለ", text: "ሀ + ለ" },
+                    { letter: "ሐ", text: "ሀ ÷ ለ" },
+                    { letter: "መ", text: "ሀ - ለ" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "በሒሳብ ህግ መሰረት ት.ጋ.አ(ሀ, ለ) × ት.ጋ.ብ(ሀ, ለ) = ሀ × ለ ነው።",
+                explanationEnglish: "Fundamental property of numbers: GCD(a, b) × LCM(a, b) = a × b."
+            },
+            {
+                id: 27, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "የሁለት ቁጥሮች ብዜት 540 እና ትንሹ የጋራ ብዜታቸው (ት.ጋ.ብ) 20 ቢሆን፣ ትልቁ የጋራ አካፋያቸው (ት.ጋ.አ) ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "10" },
+                    { letter: "ለ", text: "27" },
+                    { letter: "ሐ", text: "18" },
+                    { letter: "መ", text: "54" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "ት.ጋ.አ × ት.ጋ.ብ = ብዜት => ት.ጋ.አ = 540 ÷ 20 = 27 ነው።",
+                explanationEnglish: "GCD = Product / LCM = 540 / 20 = 27."
+            },
+            {
+                id: 28, chapter: "ምዕራፍ 1", topic: "የሙሉ ቁጥሮች ተካፋይነት",
+                text: "ሁለት አውቶቡሶች ከመናኸሪያው አንደኛው በየ16 ደቂቃ፣ ሁለተኛው በየ20 ደቂቃ ቢነሱ እና ጠዋት በአንድ ላይ ቢነሱ፣ በድጋሚ በአንድ ላይ ለመነሳት ስንት ደቂቃ ይፈጅባቸዋል?",
+                options: [
+                    { letter: "ሀ", text: "36 ደቂቃ" },
+                    { letter: "ለ", text: "60 ደቂቃ" },
+                    { letter: "ሐ", text: "80 ደቂቃ" },
+                    { letter: "መ", text: "320 ደቂቃ" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "የ 16 እና 20 ትንሹ የጋራ ብዜት (ት.ጋ.ብ)፡ 16 = 2^4, 20 = 2^2 × 5 => ት.ጋ.ብ = 2^4 × 5 = 16 × 5 = 80 ደቂቃ።",
+                explanationEnglish: "Find LCM(16, 20). 16 = 2^4 and 20 = 2^2 × 5. LCM = 16 × 5 = 80 minutes."
+            },
+
+            // ■ ምዕራፍ 2 (29 - 54)
+            {
+                id: 29, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ክፍልፋይ 140/160 በዝቅተኛ ሒሳባዊ ቃል ሲገለጽ ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "14/16" },
+                    { letter: "ለ", text: "35/40" },
+                    { letter: "ሐ", text: "70/80" },
+                    { letter: "መ", text: "7/8" }
+                ],
+                correct: "መ",
+                explanationAmharic: "ላዕሉንና ታህቱን በ 20 ስናቃልል፡ 140 ÷ 20 = 7 እና 160 ÷ 20 = 8፤ ስለዚህ 7/8 ይሆናል።",
+                explanationEnglish: "Divide numerator and denominator by their GCD (20): 140/20 = 7, 160/20 = 8 => 7/8."
+            },
+            {
+                id: 30, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ክፍልፋይ 12/64 በዝቅተኛ ሒሳባዊ ቃል ሲቀመጥ የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "3/16" },
+                    { letter: "ለ", text: "6/32" },
+                    { letter: "ሐ", text: "1/4" },
+                    { letter: "መ", text: "3/8" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "የ 12 እና 64 የጋራ አካፋይ 4 ነው፡ 12 ÷ 4 = 3፤ 64 ÷ 4 = 16፤ ውጤቱ 3/16 ይሆናል።",
+                explanationEnglish: "Divide both 12 and 64 by 4: 12÷4 = 3, 64÷4 = 16, resulting in 3/16 in simplest form."
+            },
+            {
+                id: 31, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "በሒሳባዊ አገላለጽ 3/8 = ሀ/32 ውስጥ የ'ሀ' ዋጋ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "8" },
+                    { letter: "ለ", text: "12" },
+                    { letter: "ሐ", text: "16" },
+                    { letter: "መ", text: "24" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "ታህቱ 8 ወደ 32 ለማደግ በ 4 ተባዝቷል (8 × 4 = 32)፤ ስለዚህ ላዕሉም በ 4 ይባዛል፡ ሀ = 3 × 4 = 12።",
+                explanationEnglish: "Since 8 × 4 = 32, we multiply the numerator by 4: 3 × 4 = 12."
+            },
+            {
+                id: 32, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ታህቱ 42 የሆነ ለ 5/6 ተመጣጣኝ የሆነው ክፍልፋይ የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "30/42" },
+                    { letter: "ለ", text: "25/42" },
+                    { letter: "ሐ", text: "35/42" },
+                    { letter: "መ", text: "40/42" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "ታህቱ 6 በ 7 ሲባዛ 42 ይሰጣል፤ ላዕሉ 5 በ 7 ሲባዛ 35 ይሆናል (35/42)።",
+                explanationEnglish: "Multiply numerator and denominator of 5/6 by 7: (5×7)/(6×7) = 35/42."
+            },
+            {
+                id: 33, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ላዕሉ ከታህቱ የሚያንስ ክፍልፋይ ምን ተብሎ ይጠራል?",
+                options: [
+                    { letter: "ሀ", text: "ህገ-ወጥ ክፍልፋይ" },
+                    { letter: "ለ", text: "ድብልቅ ቁጥር" },
+                    { letter: "ሐ", text: "አስርዮሻዊ ክፍልፋይ" },
+                    { letter: "መ", text: "ህገኛ ክፍልፋይ" }
+                ],
+                correct: "መ",
+                explanationAmharic: "ላዕሉ ከታህቱ የሚያንስ (Numerator < Denominator) ክፍልፋይ ህገኛ ክፍልፋይ (Proper fraction) ይባላል።",
+                explanationEnglish: "A fraction where the numerator is strictly less than the denominator is called a proper fraction."
+            },
+            {
+                id: 34, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ህገ-ወጥ ክፍልፋይ 25/7 ወደ ድብልቅ ቁጥር ሲለወጥ ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "3 እና 4/7" },
+                    { letter: "ለ", text: "3 እና 1/7" },
+                    { letter: "ሐ", text: "4 እና 1/7" },
+                    { letter: "መ", text: "2 እና 5/7" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "25 ለ 7 ሲካፈል 3 ደርሶ 4 ቀሪ አለው፤ ስለዚህ 3 ሙሉ እና 4/7 ይሆናል።",
+                explanationEnglish: "25 ÷ 7 = 3 with a remainder of 4, yielding the mixed number 3 4/7."
+            },
+            {
+                id: 35, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ድብልቅ ቁጥር 5 እና 1/7 ወደ ህገ-ወጥ ክፍልፋይ ሲለወጥ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "35/7" },
+                    { letter: "ለ", text: "36/7" },
+                    { letter: "ሐ", text: "37/7" },
+                    { letter: "መ", text: "12/7" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "(5 × 7 + 1) / 7 = (35 + 1) / 7 = 36/7።",
+                explanationEnglish: "Convert 5 1/7: (5 × 7 + 1) / 7 = 36/7."
+            },
+            {
+                id: 36, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ክፍልፋይ 7/100 ወደ አስርዮሽ ቁጥር ሲለወጥ ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "0.7" },
+                    { letter: "ለ", text: "0.007" },
+                    { letter: "ሐ", text: "0.07" },
+                    { letter: "መ", text: "7.0" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "7/100 ማለት 7 የመቶኛ ክፍል ስለሆነ 0.07 ተብሎ ይጻፋል።",
+                explanationEnglish: "7/100 represents 7 hundredths, written in decimal form as 0.07."
+            },
+            {
+                id: 37, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ክፍልፋይ 24/40 ወደ አስርዮሽ ቁጥር ሲቀየር ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "0.06" },
+                    { letter: "ለ", text: "0.4" },
+                    { letter: "ሐ", text: "0.24" },
+                    { letter: "መ", text: "0.6" }
+                ],
+                correct: "መ",
+                explanationAmharic: "24/40 በ 8 ሲቃለል 3/5 ይሆናል፤ 3 ÷ 5 = 0.6 ነው።",
+                explanationEnglish: "Simplify 24/40 = 3/5. Dividing 3 by 5 gives 0.6."
+            },
+            {
+                id: 38, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "አንድ ክፍልፋይ ላዕሉ ለታህቱ ሲካፈል የመጨረሻው ቀሪ ዜሮ (0) የሚሆን ከሆነ አስርዮሹ ምን ይባላል?",
+                options: [
+                    { letter: "ሀ", text: "አክታሚ አስርዮሽ" },
+                    { letter: "ለ", text: "ኢ-አክታሚ አስርዮሽ" },
+                    { letter: "ሐ", text: "ድብልቅ አስርዮሽ" },
+                    { letter: "መ", text: "ወሰን-የለሽ አስርዮሽ" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "የማካፈሉ ሂደት ቀሪ ዜሮ ሆኖ የሚያበቃ ከሆነ አክታሚ አስርዮሽ (Terminating decimal) ይባላል።",
+                explanationEnglish: "A decimal division that ends with a remainder of 0 is called a terminating decimal."
+            },
+            {
+                id: 39, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ክፍልፋይ 2/3 ወደ አስርዮሽ ሲለወጥ 0.666... ይሆናል፤ ይህ ምን ዓይነት አስርዮሽ ነው?",
+                options: [
+                    { letter: "ሀ", text: "አክታሚ አስርዮሽ" },
+                    { letter: "ለ", text: "ኢ-አክታሚ አስርዮሽ" },
+                    { letter: "ሐ", text: "ሙሉ አስርዮሽ" },
+                    { letter: "መ", text: "ወሰን ያለው አስርዮሽ" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "የአስርዮሽ ቁጥሩ ሳያቋርጥ በተደጋጋሚ የሚቀጥል በመሆኑ ኢ-አክታሚ ተደጋጋሚ አስርዮሽ (Non-terminating repeating decimal) ይባላል።",
+                explanationEnglish: "Since the digits repeat indefinitely without ending, it is a non-terminating repeating decimal."
+            },
+            {
+                id: 40, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ታህቱ 100 የሆነ ክፍልፋይ ምን ተብሎ ይጠራል?",
+                options: [
+                    { letter: "ሀ", text: "አስረኛ" },
+                    { letter: "ለ", text: "ሺኛ" },
+                    { letter: "ሐ", text: "መቶኛ (ፐርሰንት)" },
+                    { letter: "መ", text: "ድብልቅ ክፍልፋይ" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "መቶኛ (Percentage) ማለት ታህቱ 100 የሆነ ክፍልፋይ ማለት ነው።",
+                explanationEnglish: "Percent literally means 'per hundred', which is a fraction with denominator 100."
+            },
+            {
+                id: 41, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ክፍልፋይ 7/20 ወደ መቶኛ ሲቀየር ስንት ፐርሰንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "70%" },
+                    { letter: "ለ", text: "14%" },
+                    { letter: "ሐ", text: "25%" },
+                    { letter: "መ", text: "35%" }
+                ],
+                correct: "መ",
+                explanationAmharic: "(7/20) × 100% = 7 × 5% = 35%።",
+                explanationEnglish: "(7 / 20) × 100% = 7 × 5 = 35%."
+            },
+            {
+                id: 42, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ክፍልፋይ 16/25 በመቶኛ ሲገለጽ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "64%" },
+                    { letter: "ለ", text: "16%" },
+                    { letter: "ሐ", text: "32%" },
+                    { letter: "መ", text: "80%" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "(16/25) × 100% = 16 × 4% = 64%።",
+                explanationEnglish: "(16 / 25) × 100% = 16 × 4 = 64%."
+            },
+            {
+                id: 43, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "አስርዮሽ ቁጥር 0.21 ወደ መቶኛ ሲለወጥ ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "2.1%" },
+                    { letter: "ለ", text: "21%" },
+                    { letter: "ሐ", text: "210%" },
+                    { letter: "መ", text: "0.21%" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "0.21 × 100% = 21%። ነጥቧን ሁለት ደረጃ ወደ ቀኝ እናንሸራትታለን።",
+                explanationEnglish: "To convert decimal to percentage, multiply by 100: 0.21 × 100 = 21%."
+            },
+            {
+                id: 44, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "አስርዮሽ ቁጥር 0.08 ወደ ዝቅተኛ ክፍልፋይ ሲለወጥ ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "8/10" },
+                    { letter: "ለ", text: "4/25" },
+                    { letter: "ሐ", text: "2/25" },
+                    { letter: "መ", text: "1/125" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "0.08 = 8/100። ሁለቱንም ለ 4 ስናካፍል፡ 8÷4 = 2, 100÷4 = 25፤ ስለዚህ 2/25 ይሆናል።",
+                explanationEnglish: "0.08 = 8/100. Reducing by dividing both by 4 yields 2/25."
+            },
+            {
+                id: 45, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "25% በዝቅተኛ ሒሳባዊ ቃል ሲገለጽ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "1/2" },
+                    { letter: "ለ", text: "2/5" },
+                    { letter: "ሐ", text: "1/5" },
+                    { letter: "መ", text: "1/4" }
+                ],
+                correct: "መ",
+                explanationAmharic: "25% = 25/100 = 1/4።",
+                explanationEnglish: "25% = 25/100 = 1/4 in simplest fractional form."
+            },
+            {
+                id: 46, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "34% ወደ አስርዮሽ ቁጥር ሲቀየር ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "0.34" },
+                    { letter: "ለ", text: "3.4" },
+                    { letter: "ሐ", text: "0.034" },
+                    { letter: "መ", text: "34.0" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "34% = 34 / 100 = 0.34።",
+                explanationEnglish: "34% = 34 / 100 = 0.34 in decimal notation."
+            },
+            {
+                id: 47, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "0.15% ወደ አስርዮሽ ቁጥር ሲለወጥ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "0.015" },
+                    { letter: "ለ", text: "0.0015" },
+                    { letter: "ሐ", text: "0.15" },
+                    { letter: "መ", text: "1.5" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "0.15% = 0.15 / 100 = 0.0015።",
+                explanationEnglish: "0.15% = 0.15 / 100 = 0.0015."
+            },
+            {
+                id: 48, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "በክፍልፋዮች 4/5 እና 3/7 መካከል የሚገባው ትክክለኛ ምልክት የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "<" },
+                    { letter: "ለ", text: "=" },
+                    { letter: "ሐ", text: ">" },
+                    { letter: "መ", text: "≤" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "በአቋራጭ ማባዛት፡ 4 × 7 = 28 ሲሆን 5 × 3 = 15 ነው። 28 > 15 ስለሆነ 4/5 > 3/7 ነው።",
+                explanationEnglish: "Cross multiply: 4 × 7 = 28 vs 5 × 3 = 15. Since 28 > 15, 4/5 > 3/7."
+            },
+            {
+                id: 49, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "በ 0.5 እና 4/5 መካከል ያለውን ዝምድና የሚያሳየው ትክክለኛ አገላለጽ የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "0.5 > 4/5" },
+                    { letter: "ለ", text: "0.5 = 4/5" },
+                    { letter: "ሐ", text: "4/5 < 0.5" },
+                    { letter: "መ", text: "0.5 < 4/5" }
+                ],
+                correct: "መ",
+                explanationAmharic: "4/5 = 0.8 ነው። 0.5 ከ 0.8 ያንሳል፤ ስለዚህ 0.5 < 4/5 ትክክል ነው።",
+                explanationEnglish: "4/5 = 0.8. Clearly, 0.5 < 0.8, which means 0.5 < 4/5."
+            },
+            {
+                id: 50, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ከሚከተሉት ውስጥ ከትንሽ ወደ ትልቅ በቅደም ተከተል የተቀመጠው የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "2/21 < 9/42 < 5/6 < 6/7" },
+                    { letter: "ለ", text: "6/7 < 5/6 < 9/42 < 2/21" },
+                    { letter: "ሐ", text: "5/6 < 6/7 < 2/21 < 9/42" },
+                    { letter: "መ", text: "9/42 < 2/21 < 5/6 < 6/7" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "ታህቱን 42 ስናደርግ፡ 2/21 = 4/42፤ 9/42፤ 5/6 = 35/42፤ 6/7 = 36/42። ቅደም ተከተሉ 4/42 < 9/42 < 35/42 < 36/42 ነው።",
+                explanationEnglish: "Convert to common denominator 42: 2/21=4/42, 9/42=9/42, 5/6=35/42, 6/7=36/42. Thus 2/21 < 9/42 < 5/6 < 6/7."
+            },
+            {
+                id: 51, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ከተተከሉ 3,456,000 ችግኞች ውስጥ 2,851,200 ችግኞች ቢፀድቁ፣ የፀደቁት ችግኞች መቶኛ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "75%" },
+                    { letter: "ለ", text: "82.5%" },
+                    { letter: "ሐ", text: "80%" },
+                    { letter: "መ", text: "85.5%" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "(2,851,200 / 3,456,000) × 100% = 0.825 × 100% = 82.5%።",
+                explanationEnglish: "(2,851,200 / 3,456,000) × 100% = 0.825 × 100% = 82.5%."
+            },
+            {
+                id: 52, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "የሀረገወይን የመጽሐፍ መደርደሪያ 2/5 የተሞላ ሲሆን፣ የቃልኪዳን ደግሞ 5/6 ተሞልቷል፤ የበለጠ መጽሐፍ የያዘው የማን መደርደሪያ ነው?",
+                options: [
+                    { letter: "ሀ", text: "የሁለቱም እኩል ነው" },
+                    { letter: "ለ", text: "የሀረገወይን" },
+                    { letter: "ሐ", text: "የቃልኪዳን" },
+                    { letter: "መ", text: "መለየት አይቻልም" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "2/5 = 0.40 እና 5/6 = 0.833... ነው። 5/6 > 2/5 ስለሆነ የቃልኪዳን መደርደሪያ የበለጠ ይዟል።",
+                explanationEnglish: "Comparing 2/5 (0.4) and 5/6 (~0.833). Since 5/6 > 2/5, Kalkidan's bookshelf holds more."
+            },
+            {
+                id: 53, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "ተማሪ ሀሊማ ከ 20 የሒሳብ ፈተና ጥያቄዎች ውስጥ 18ቱን ብትመልስ ያገኘችው ውጤት በመቶኛ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "80%" },
+                    { letter: "ለ", text: "85%" },
+                    { letter: "ሐ", text: "72%" },
+                    { letter: "መ", text: "90%" }
+                ],
+                correct: "መ",
+                explanationAmharic: "(18 / 20) × 100% = 18 × 5% = 90%።",
+                explanationEnglish: "(18 / 20) × 100% = 90%."
+            },
+            {
+                id: 54, chapter: "ምዕራፍ 2", topic: "ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች",
+                text: "አንድ ነጋዴ አንድን እቃ በ 10,000 ብር ገዝቶ በ 13,000 ብር ቢሸጥ ያገኘው የትርፍ መቶኛ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "30%" },
+                    { letter: "ለ", text: "3%" },
+                    { letter: "ሐ", text: "13%" },
+                    { letter: "መ", text: "25%" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "ትርፍ = 13,000 - 10,000 = 3,000 ብር። የትርፍ መቶኛ = (3,000 / 10,000) × 100% = 30%።",
+                explanationEnglish: "Profit = 13,000 - 10,000 = 3,000. Profit percentage = (3,000 / 10,000) × 100% = 30%."
+            },
+
+            // ■ ምዕራፍ 3 (55 - 80)
+            {
+                id: 55, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 1/5 እና 0.5 ድምር በክፍልፋይ ሲገለጽ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "3/5" },
+                    { letter: "ለ", text: "7/10" },
+                    { letter: "ሐ", text: "1/2" },
+                    { letter: "መ", text: "4/5" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "0.5 = 1/2 ነው። 1/5 + 1/2 = 2/10 + 5/10 = 7/10።",
+                explanationEnglish: "0.5 = 1/2. Common denominator is 10: 1/5 + 1/2 = 2/10 + 5/10 = 7/10."
+            },
+            {
+                id: 56, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 15/4 + 1.25 ውጤት ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "4.5" },
+                    { letter: "ለ", text: "6" },
+                    { letter: "ሐ", text: "5" },
+                    { letter: "መ", text: "5.25" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "15/4 = 3.75 ነው። 3.75 + 1.25 = 5.0 (5) ይሆናል።",
+                explanationEnglish: "15/4 = 3.75. Then 3.75 + 1.25 = 5.0."
+            },
+            {
+                id: 57, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 3 እና 1/2 + 3.75 ድምር በአስርዮሽ ሲገለጽ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "6.75" },
+                    { letter: "ለ", text: "7.5" },
+                    { letter: "ሐ", text: "7.15" },
+                    { letter: "መ", text: "7.25" }
+                ],
+                correct: "መ",
+                explanationAmharic: "3 እና 1/2 = 3.5 ነው። 3.5 + 3.75 = 7.25።",
+                explanationEnglish: "3 1/2 = 3.5. 3.5 + 3.75 = 7.25."
+            },
+            {
+                id: 58, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "ቃልኪዳን 3 እና 1/2 ኪሎግራም ብርቱካን እና 2.75 ኪሎግራም ፓፓያ ብትገዛ በአጠቃላይ ስንት ኪሎግራም ፍራፍሬ ገዛች?",
+                options: [
+                    { letter: "ሀ", text: "6.25 ኪ.ግ" },
+                    { letter: "ለ", text: "5.75 ኪ.ግ" },
+                    { letter: "ሐ", text: "6.5 ኪ.ግ" },
+                    { letter: "መ", text: "5.5 ኪ.ግ" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "3.5 ኪ.ግ + 2.75 ኪ.ግ = 6.25 ኪሎግራም ፍራፍሬ።",
+                explanationEnglish: "3.5 kg + 2.75 kg = 6.25 kg of total fruit."
+            },
+            {
+                id: 59, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 9/5 - 0.3 ልዩነት በክፍልፋይ ሲገለጽ ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "6/5" },
+                    { letter: "ለ", text: "3/2" },
+                    { letter: "ሐ", text: "4/3" },
+                    { letter: "መ", text: "7/5" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "9/5 = 1.8፤ 1.8 - 0.3 = 1.5 = 15/10 = 3/2።",
+                explanationEnglish: "9/5 - 3/10 = 18/10 - 3/10 = 15/10 = 3/2."
+            },
+            {
+                id: 60, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 4.25 - 17/4 ውጤት ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "1" },
+                    { letter: "ለ", text: "0.25" },
+                    { letter: "ሐ", text: "0" },
+                    { letter: "መ", text: "0.5" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "17/4 = 4.25 ነው። ስለዚህ 4.25 - 4.25 = 0።",
+                explanationEnglish: "17/4 = 4.25. Therefore, 4.25 - 4.25 = 0."
+            },
+            {
+                id: 61, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 5 እና 3/8 - 1.85 ልዩነት በአስርዮሽ ሲገለጽ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "3.5" },
+                    { letter: "ለ", text: "3.25" },
+                    { letter: "ሐ", text: "3.535" },
+                    { letter: "መ", text: "3.525" }
+                ],
+                correct: "መ",
+                explanationAmharic: "3/8 = 0.375 ስለሆነ 5 እና 3/8 = 5.375 ነው። 5.375 - 1.85 = 3.525።",
+                explanationEnglish: "5 3/8 = 5.375. 5.375 - 1.850 = 3.525."
+            },
+            {
+                id: 62, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "በረከት 3 እና 2/5 ኪሎ ሜትር መጓዝ ነበረበት፤ ከዚህ ውስጥ 2.75 ኪሎ ሜትር በመኪና ቢጓዝ በእግር የተጓዘው ስንት ኪሎ ሜትር ነው?",
+                options: [
+                    { letter: "ሀ", text: "0.65 ኪ.ሜ" },
+                    { letter: "ለ", text: "0.75 ኪ.ሜ" },
+                    { letter: "ሐ", text: "0.55 ኪ.ሜ" },
+                    { letter: "መ", text: "1.15 ኪ.ሜ" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "3 እና 2/5 = 3.4 ኪ.ሜ ነው። 3.40 - 2.75 = 0.65 ኪ.ሜ በእግሩ ተጉዟል።",
+                explanationEnglish: "3 2/5 = 3.4 km. Distance by foot = 3.40 - 2.75 = 0.65 km."
+            },
+            {
+                id: 63, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 2/5 × 0.5 ብዜት በክፍልፋይ ሲገለጽ ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "2/10" },
+                    { letter: "ለ", text: "1/5" },
+                    { letter: "ሐ", text: "1/10" },
+                    { letter: "መ", text: "1/2" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "0.5 = 1/2 ነው። 2/5 × 1/2 = 2/10 = 1/5።",
+                explanationEnglish: "2/5 × 1/2 = 2/10 = 1/5 in simplest fraction form."
+            },
+            {
+                id: 64, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 1.25 × 3/4 ብዜት በአስርዮሽ ሲገለጽ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "0.875" },
+                    { letter: "ለ", text: "0.95" },
+                    { letter: "ሐ", text: "0.9375" },
+                    { letter: "መ", text: "1.0" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "3/4 = 0.75 ነው። 1.25 × 0.75 = 0.9375።",
+                explanationEnglish: "3/4 = 0.75. 1.25 × 0.75 = 0.9375."
+            },
+            {
+                id: 65, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "አንድ የሬክታንግል ቅርጽ ያለው የአትክልት መደብ ቁመቱ 4 እና 1/2 ሜትር፣ ወርዱ 3.5 ሜትር ቢሆን ስፋቱ ስንት ካሬ ሜትር ነው?",
+                options: [
+                    { letter: "ሀ", text: "14.5" },
+                    { letter: "ለ", text: "15.5" },
+                    { letter: "ሐ", text: "16.0" },
+                    { letter: "መ", text: "15.75" }
+                ],
+                correct: "መ",
+                explanationAmharic: "ስፋት = ቁመት × ወርድ = 4.5 ሜ × 3.5 ሜ = 15.75 ካሬ ሜትር።",
+                explanationEnglish: "Area = Length × Width = 4.5 m × 3.5 m = 15.75 m²."
+            },
+            {
+                id: 66, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "አየለ በቀን 3.25 ኪሎ ሜትር ለ 12 ቀናት ሳያቋርጥ ቢሮጥ፣ በአጠቃላይ ስንት ኪሎ ሜትር ሮጧል?",
+                options: [
+                    { letter: "ሀ", text: "39 ኪ.ሜ" },
+                    { letter: "ለ", text: "36 ኪ.ሜ" },
+                    { letter: "ሐ", text: "38.5 ኪ.ሜ" },
+                    { letter: "መ", text: "42 ኪ.ሜ" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "3.25 × 12 = 39 ኪሎ ሜትር።",
+                explanationEnglish: "Total distance = 3.25 × 12 = 39 km."
+            },
+            {
+                id: 67, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 2 እና 1/4 ÷ 0.5 ስሌት ውጤት ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "4" },
+                    { letter: "ለ", text: "4.5" },
+                    { letter: "ሐ", text: "5" },
+                    { letter: "መ", text: "4.25" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "2 እና 1/4 = 2.25 ነው። 2.25 ÷ 0.5 = 4.5።",
+                explanationEnglish: "2 1/4 = 2.25. 2.25 ÷ 0.5 = 4.5."
+            },
+            {
+                id: 68, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የ 3.25 ÷ 2/5 ድርሻ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "6.5" },
+                    { letter: "ለ", text: "7.25" },
+                    { letter: "ሐ", text: "8.125" },
+                    { letter: "መ", text: "8.5" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "2/5 = 0.4 ነው። 3.25 ÷ 0.4 = 8.125 (ወይም 13/4 × 5/2 = 65/8 = 8.125)።",
+                explanationEnglish: "3.25 ÷ 0.4 = 8.125 (or 13/4 × 5/2 = 65/8 = 8.125)."
+            },
+            {
+                id: 69, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "ክፍልፋዮችን በምናካፍልበት ጊዜ አካፋዩን በተገላቢጦሽ (Reciprocal) ካደረግን በኋላ የማካፈል ምልክቱ ወደ ምን ይቀየራል?",
+                options: [
+                    { letter: "ሀ", text: "ወደ መደመር" },
+                    { letter: "ለ", text: "ወደ መቀነስ" },
+                    { letter: "ሐ", text: "ወደ እኩል ይሆናል" },
+                    { letter: "መ", text: "ወደ ማባዛት" }
+                ],
+                correct: "መ",
+                explanationAmharic: "ክፍልፋይን በክፍልፋይ ለማካፈል የማካፈል ምልክቱ ወደ ማባዛት (×) ተቀይሮ አካፋዩ ይገለበጣል።",
+                explanationEnglish: "To divide fractions, change the division sign to multiplication and invert the divisor fraction."
+            },
+            {
+                id: 70, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "አስለም 32.5 ሜትር ጨርቅ አለው፤ ለአንድ ሙሉ ልብስ 3 እና 1/4 ሜትር ቢያስፈልገው ስንት ሙሉ ልብሶችን ማሰፋት ይችላል?",
+                options: [
+                    { letter: "ሀ", text: "10" },
+                    { letter: "ለ", text: "12" },
+                    { letter: "ሐ", text: "8" },
+                    { letter: "መ", text: "11" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "3 እና 1/4 = 3.25 ሜትር። 32.5 ÷ 3.25 = 10 ሙሉ ልብሶች።",
+                explanationEnglish: "3 1/4 m = 3.25 m. 32.5 / 3.25 = 10 complete suits."
+            },
+            {
+                id: 71, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "አንድ ተጓዥ 15 ኪሎ ሜትር በብስክሌት ለመጓዝ 0.3 ሰዓት ቢፈጅበት፣ ፍጥነቱ በሰዓት ስንት ኪሎ ሜትር ነው?",
+                options: [
+                    { letter: "ሀ", text: "45 ኪ.ሜ/ሰ" },
+                    { letter: "ለ", text: "50 ኪ.ሜ/ሰ" },
+                    { letter: "ሐ", text: "30 ኪ.ሜ/ሰ" },
+                    { letter: "መ", text: "5 ኪ.ሜ/ሰ" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "ፍጥነት = ርቀት ÷ ጊዜ = 15 ÷ 0.3 = 150 ÷ 3 = 50 ኪ.ሜ/ሰዓት።",
+                explanationEnglish: "Speed = Distance / Time = 15 km / 0.3 hr = 50 km/h."
+            },
+            {
+                id: 72, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "ቁጥር 8,700 በአስር ርቢ (Scientific notation) ሲገለጽ የቱ ነው?",
+                options: [
+                    { letter: "ሀ", text: "87 × 10^2" },
+                    { letter: "ለ", text: "0.87 × 10^4" },
+                    { letter: "ሐ", text: "8.7 × 10^3" },
+                    { letter: "መ", text: "8.7 × 10^4" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "በሳይንሳዊ አጻጻፍ የመጀመሪያው ቁጥር በ 1 እና በ 10 መካከል መሆን አለበት፤ 8,700 = 8.7 × 10^3።",
+                explanationEnglish: "In scientific notation a × 10^n where 1 ≤ a < 10, 8,700 = 8.7 × 10^3."
+            },
+            {
+                id: 73, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "ቁጥር 93,000 በአስር ርቢ ብዜት ሲገለጽ ስንት ይሆናል?",
+                options: [
+                    { letter: "ሀ", text: "93 × 10^3" },
+                    { letter: "ለ", text: "0.93 × 10^5" },
+                    { letter: "ሐ", text: "9.3 × 10^3" },
+                    { letter: "መ", text: "9.3 × 10^4" }
+                ],
+                correct: "መ",
+                explanationAmharic: "ነጥቧን 4 ደረጃ ወደ ግራ ስናንቀሳቅስ 9.3 × 10^4 ይሆናል።",
+                explanationEnglish: "Moving the decimal 4 places to the left gives 9.3 × 10^4."
+            },
+            {
+                id: 74, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "አንድ ጊጋ ባይት 1,000,000,000 ባይት ቢሆን፣ ይህ በአስር ርቢ ሲገለጽ ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "1 × 10^9 ባይት" },
+                    { letter: "ለ", text: "1 × 10^6 ባይት" },
+                    { letter: "ሐ", text: "1 × 10^8 ባይት" },
+                    { letter: "መ", text: "1 × 10^12 ባይት" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "አንድ ቢሊዮን (1,000,000,000) ዘጠኝ ዜሮዎች ስላሉት 1 × 10^9 ይሆናል።",
+                explanationEnglish: "1,000,000,000 has 9 zeros, so it is expressed as 1 × 10^9 bytes."
+            },
+            {
+                id: 75, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የተሰጠው 3.12 × 10^6 ወደ መቁጠሪያ ቁጥር ሲቀየር ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "312,000" },
+                    { letter: "ለ", text: "3,120,000" },
+                    { letter: "ሐ", text: "31,200,000" },
+                    { letter: "መ", text: "312,000,000" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "ነጥቧን 6 ደረጃ ወደ ቀኝ ስናንቀሳቅስ 3,120,000 (ሦስት ሚሊዮን አንድ መቶ ሃያ ሺህ) ይሆናል።",
+                explanationEnglish: "3.12 × 10^6 = 3,120,000 (move decimal 6 places right)."
+            },
+            {
+                id: 76, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "የብርሃን ፍጥነት 3 × 10^5 ኪሎ ሜትር በሴኮንድ ቢሆን፣ በመቁጠሪያ ቁጥር ስንት ነው?",
+                options: [
+                    { letter: "ሀ", text: "30,000 ኪ.ሜ" },
+                    { letter: "ለ", text: "3,000,000 ኪ.ሜ" },
+                    { letter: "ሐ", text: "300,000 ኪ.ሜ" },
+                    { letter: "መ", text: "3,000 ኪ.ሜ" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "3 × 10^5 = 3 × 100,000 = 300,000 ኪሎ ሜትር በሴኮንድ።",
+                explanationEnglish: "3 × 10^5 = 3 × 100,000 = 300,000 km/s."
+            },
+            {
+                id: 77, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "ሜርኩሪ ከመሬት 3.6 × 10^7 ኪ.ሜ፣ ጁፒተር ደግሞ 6.287 × 10^8 ኪ.ሜ ቢርቁ፣ ለመሬት ይበልጥ የምትቀርበው የትኛዋ ናት?",
+                options: [
+                    { letter: "ሀ", text: "ጁፒተር" },
+                    { letter: "ለ", text: "ሁለቱም እኩል ናቸው" },
+                    { letter: "ሐ", text: "መለየት አይቻልም" },
+                    { letter: "መ", text: "ሜርኩሪ" }
+                ],
+                correct: "መ",
+                explanationAmharic: "10^7 ከ 10^8 ስለሚያንስ (36 ሚሊዮን < 628.7 ሚሊዮን) ሜርኩሪ በይበልጥ ለመሬት ትቀርባለች።",
+                explanationEnglish: "3.6 × 10^7 is an order of magnitude smaller than 6.287 × 10^8, so Mercury is closer."
+            },
+            {
+                id: 78, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "ከአራቱ መሠረታዊ የሒሳብ ስሌቶች ውስጥ የቅይይር ባህሪ (Commutative property) ያላቸው የትኞቹ ናቸው?",
+                options: [
+                    { letter: "ሀ", text: "መደመር እና ማባዛት" },
+                    { letter: "ለ", text: "መደመር እና መቀነስ" },
+                    { letter: "ሐ", text: "ማባዛት እና ማካፈል" },
+                    { letter: "መ", text: "መቀነስ እና ማካፈል" }
+                ],
+                correct: "ሀ",
+                explanationAmharic: "ሀ + ለ = ለ + ሀ እና ሀ × ለ = ለ × ሀ የሚሰሩት ለመደመርና ለማባዛት ብቻ ነው። መቀነስና ማካፈል ቅይይር አይደሉም።",
+                explanationEnglish: "Addition and Multiplication satisfy the commutative property: a + b = b + a and a × b = b × a."
+            },
+            {
+                id: 79, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "ለማንኛውም ቁጥር ሀ፣ ለ እና መ (ለ ≠ 0)፤ ሀ ÷ ለ = መ ቢሆን ከሚከተሉት ሁልጊዜ እውነት የሆነው የትኛው ነው?",
+                options: [
+                    { letter: "ሀ", text: "ሀ = ለ ÷ መ" },
+                    { letter: "ለ", text: "ሀ = ለ × መ" },
+                    { letter: "ሐ", text: "ለ = ሀ × መ" },
+                    { letter: "መ", text: "መ = ሀ × ለ" }
+                ],
+                correct: "ለ",
+                explanationAmharic: "የማካፈል የተገላቢጦሽ ስሌት ማባዛት ነው፤ ሀ ÷ ለ = መ ከሆነ ሀ = ለ × መ ይሆናል።",
+                explanationEnglish: "Division is the inverse operation of multiplication: if a / b = m, then a = b × m."
+            },
+            {
+                id: 80, chapter: "ምዕራፍ 3", topic: "ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች",
+                text: "በአንድ ትምህርት ቤት ውስጥ 655 ተማሪዎች እያንዳንዳቸው በአማካይ 0.85 ሊትር ደም በፈቃደኝነት ቢለግሱ፣ የተሰበሰበው ጠቅላላ ደም ስንት ሊትር ነው?",
+                options: [
+                    { letter: "ሀ", text: "550.5 ሊትር" },
+                    { letter: "ለ", text: "555.25 ሊትር" },
+                    { letter: "ሐ", text: "556.75 ሊትር" },
+                    { letter: "መ", text: "560.0 ሊትር" }
+                ],
+                correct: "ሐ",
+                explanationAmharic: "655 × 0.85 = 556.75 ሊትር ደም ይሰበሰባል።",
+                explanationEnglish: "655 × 0.85 = 556.75 liters of blood collected."
+            }
+        ];
+
+        // State Management
+        let studentData = {
+            name: "",
+            id: "",
+            section: "",
+            startTime: null,
+            endTime: null
+        };
+
+        let currentIndex = 0;
+        // userAnswers stores: { selected: 'ሀ', isCorrect: true, answeredAt: Date }
+        const userAnswers = new Array(80).fill(null);
+        let examTimer = null;
+        let totalSecondsRemaining = 2 * 3600 + 30 * 60; // 2 hours 30 mins (9000 seconds)
+        let reviewMode = false;
+
+        // Target Teacher Email
+        const TEACHER_EMAIL = "mesayferedegn2@gmail.com";
+
+        // Toast Helper (No window.alert)
+        function showToast(message, type = "info") {
+            const toast = document.getElementById("toastNotification");
+            const toastMsg = document.getElementById("toastMessage");
+            const toastIcon = document.getElementById("toastIcon");
+
+            toastMsg.textContent = message;
+            if (type === "success") {
+                toastIcon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+            } else if (type === "error") {
+                toastIcon.className = "fa-solid fa-circle-exclamation text-rose-400 text-lg";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-info text-indigo-400 text-lg";
+            }
+
+            toast.classList.remove("translate-y-24", "opacity-0", "pointer-events-none");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            setTimeout(() => {
+                toast.classList.add("translate-y-24", "opacity-0", "pointer-events-none");
+                toast.classList.remove("translate-y-0", "opacity-100");
+            }, 3500);
+        }
+
+        // Initialize 80-Item Grid
+        function buildGridNavigator() {
+            const gridContainer = document.getElementById("questionGrid");
+            gridContainer.innerHTML = "";
+            for (let i = 0; i < 80; i++) {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.id = `grid-btn-${i}`;
+                btn.className = "w-8 h-8 rounded-lg text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:border-indigo-400 flex items-center justify-center transition";
+                btn.textContent = i + 1;
+                btn.title = `ጥያቄ ${i + 1}`;
+                btn.addEventListener("click", () => {
+                    currentIndex = i;
+                    renderCurrentQuestion();
+                });
+                gridContainer.appendChild(btn);
+            }
+        }
+
+        // Update Grid Item Styles
+        function updateGridPallet() {
+            for (let i = 0; i < 80; i++) {
+                const btn = document.getElementById(`grid-btn-${i}`);
+                if (!btn) continue;
+
+                // Base reset
+                btn.className = "w-8 h-8 rounded-lg text-xs font-bold transition flex items-center justify-center ";
+
+                const ans = userAnswers[i];
+                if (ans !== null) {
+                    if (ans.isCorrect) {
+                        btn.className += "bg-emerald-500 text-white border-emerald-600 shadow-xs";
+                    } else {
+                        btn.className += "bg-rose-500 text-white border-rose-600 shadow-xs";
+                    }
+                } else {
+                    btn.className += "bg-white text-slate-700 border-slate-200 hover:bg-slate-100";
+                }
+
+                if (i === currentIndex) {
+                    btn.className += " ring-2 ring-indigo-600 ring-offset-2 scale-105 z-10";
+                }
+            }
+        }
+
+        // Render Current Question View
+        function renderCurrentQuestion() {
+            const q = questionsData[currentIndex];
+            const currentAnswer = userAnswers[currentIndex];
+
+            // Update Headers & Indicators
+            document.getElementById("currentQNum").textContent = currentIndex + 1;
+            document.getElementById("questionNumberTag").textContent = currentIndex + 1;
+            document.getElementById("chapterBadge").textContent = q.chapter;
+            document.getElementById("questionCategory").textContent = q.topic;
+            document.getElementById("questionText").textContent = q.text;
+
+            // Render Options
+            const container = document.getElementById("optionsContainer");
+            container.innerHTML = "";
+
+            q.options.forEach(opt => {
+                const optionBtn = document.createElement("button");
+                optionBtn.type = "button";
+                optionBtn.className = "w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 flex items-start space-x-3.5 relative group font-medium text-sm sm:text-base ";
+
+                // Logic for styling answered state vs unanswered state
+                if (currentAnswer !== null) {
+                    // Question is already locked (Irreversible)
+                    optionBtn.disabled = true;
+                    optionBtn.classList.add("cursor-default");
+
+                    if (opt.letter === q.correct) {
+                        // Highlight correct answer in Emerald Green
+                        optionBtn.classList.add("bg-emerald-50", "border-emerald-500", "text-emerald-900", "ring-1", "ring-emerald-500");
+                        optionBtn.innerHTML = `
+                            <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex-shrink-0 flex items-center justify-center font-bold text-xs shadow-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                            <span class="flex-grow pt-0.5">${opt.letter}. ${opt.text}</span>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md ml-2">ትክክለኛ መልስ</span>
+                        `;
+                    } else if (opt.letter === currentAnswer.selected) {
+                        // Highlight student's incorrect choice in Rose Red
+                        optionBtn.classList.add("bg-rose-50", "border-rose-400", "text-rose-900", "ring-1", "ring-rose-400");
+                        optionBtn.innerHTML = `
+                            <span class="w-7 h-7 rounded-lg bg-rose-600 text-white flex-shrink-0 flex items-center justify-center font-bold text-xs shadow-xs">
+                                <i class="fa-solid fa-xmark"></i>
+                            </span>
+                            <span class="flex-grow pt-0.5">${opt.letter}. ${opt.text}</span>
+                            <span class="text-xs font-bold text-rose-700 bg-rose-100 px-2.5 py-1 rounded-md ml-2">የተሳሳተ ምርጫ</span>
+                        `;
+                    } else {
+                        // Neutral inactive option
+                        optionBtn.classList.add("bg-slate-50", "border-slate-200", "text-slate-400", "opacity-60");
+                        optionBtn.innerHTML = `
+                            <span class="w-7 h-7 rounded-lg bg-slate-200 text-slate-500 flex-shrink-0 flex items-center justify-center font-bold text-xs">
+                                ${opt.letter}
+                            </span>
+                            <span class="flex-grow pt-0.5">${opt.letter}. ${opt.text}</span>
+                        `;
+                    }
+                } else {
+                    // Unanswered active option
+                    optionBtn.classList.add("bg-white", "border-slate-200", "hover:border-indigo-500", "hover:bg-indigo-50/50", "text-slate-800", "hover:shadow-xs");
+                    optionBtn.innerHTML = `
+                        <span class="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-indigo-600 group-hover:text-white text-slate-700 flex-shrink-0 flex items-center justify-center font-bold text-xs transition duration-150 border border-slate-200">
+                            ${opt.letter}
+                        </span>
+                        <span class="flex-grow pt-0.5">${opt.letter}. ${opt.text}</span>
+                    `;
+
+                    // Single-click irreversible response
+                    optionBtn.addEventListener("click", () => handleAnswerSelect(opt.letter));
+                }
+
+                container.appendChild(optionBtn);
+            });
+
+            // Handle Explanation Card Visibility
+            const expBox = document.getElementById("explanationBox");
+            if (currentAnswer !== null) {
+                expBox.classList.remove("hidden");
+                const isCorrect = currentAnswer.isCorrect;
+
+                if (isCorrect) {
+                    expBox.className = "mt-6 rounded-xl border border-emerald-300 bg-emerald-50/70 p-5 transition duration-300";
+                    document.getElementById("explanationIcon").className = "fa-solid fa-circle-check text-emerald-600 text-lg";
+                    document.getElementById("explanationTitle").className = "font-bold text-xs uppercase tracking-wider text-emerald-800";
+                    document.getElementById("explanationTitle").textContent = "ትክክል ነው! (Correct Answer)";
+                } else {
+                    expBox.className = "mt-6 rounded-xl border border-rose-300 bg-rose-50/70 p-5 transition duration-300";
+                    document.getElementById("explanationIcon").className = "fa-solid fa-circle-xmark text-rose-600 text-lg";
+                    document.getElementById("explanationTitle").className = "font-bold text-xs uppercase tracking-wider text-rose-800";
+                    document.getElementById("explanationTitle").textContent = `ስህተት ነው! ትክክለኛው መልስ [ ${q.correct} ] ነው (Explanation)`;
+                }
+
+                document.getElementById("explanationAmharic").textContent = q.explanationAmharic;
+                document.getElementById("explanationEnglish").textContent = q.explanationEnglish;
+            } else {
+                expBox.classList.add("hidden");
+            }
+
+            // Navigation Button States
+            document.getElementById("btnPrev").disabled = (currentIndex === 0);
+            document.getElementById("btnNext").disabled = (currentIndex === 79);
+
+            updateStatsAndProgress();
+            updateGridPallet();
+        }
+
+        // Process User Choice (Irreversible Instant Feedback)
+        function handleAnswerSelect(selectedLetter) {
+            if (userAnswers[currentIndex] !== null) return; // Prevent change
+
+            const q = questionsData[currentIndex];
+            const isCorrect = (selectedLetter === q.correct);
+
+            userAnswers[currentIndex] = {
+                selected: selectedLetter,
+                isCorrect: isCorrect,
+                answeredAt: new Date()
+            };
+
+            // Play small haptic notification or sound cue if available
+            renderCurrentQuestion();
+
+            if (isCorrect) {
+                showToast(`ትክክል! ጥያቄ ${currentIndex + 1} በትክክል ተመልሷል።`, "success");
+            } else {
+                showToast(`የተሳሳተ መልስ! ጥያቄ ${currentIndex + 1} ትክክለኛው '${q.correct}' ነው።`, "error");
+            }
+        }
+
+        // Recalculate Dashboard Counters
+        function updateStatsAndProgress() {
+            let answered = 0;
+            let correct = 0;
+            let wrong = 0;
+
+            userAnswers.forEach(ans => {
+                if (ans !== null) {
+                    answered++;
+                    if (ans.isCorrect) correct++;
+                    else wrong++;
+                }
+            });
+
+            const percent = Math.round((answered / 80) * 100);
+
+            document.getElementById("answeredHeaderCount").textContent = answered;
+            document.getElementById("progressPercent").textContent = `${percent}%`;
+            document.getElementById("progressBar").style.width = `${percent}%`;
+            document.getElementById("correctCounter").textContent = correct;
+            document.getElementById("wrongCounter").textContent = wrong;
+            document.getElementById("unansweredCounter").textContent = 80 - answered;
+        }
+
+        // Navigation Actions
+        document.getElementById("btnNext").addEventListener("click", () => {
+            if (currentIndex < 79) {
+                currentIndex++;
+                renderCurrentQuestion();
+            }
+        });
+
+        document.getElementById("btnPrev").addEventListener("click", () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderCurrentQuestion();
+            }
+        });
+
+        document.getElementById("btnSkip").addEventListener("click", () => {
+            if (currentIndex < 79) {
+                currentIndex++;
+                renderCurrentQuestion();
+                showToast(`ጥያቄ ${currentIndex} ተዘሏል፤ በኋላ መመለስ ይችላሉ።`, "info");
+            } else {
+                showToast("ይህ የመጨረሻው ጥያቄ ነው።", "info");
+            }
+        });
+
+        // Submission & Grading Calculation
+        function finalizeQuiz() {
+            clearInterval(examTimer);
+            studentData.endTime = new Date();
+
+            let totalCorrect = 0;
+            let totalWrong = 0;
+            let totalUnanswered = 0;
+            let ch1Score = 0, ch2Score = 0, ch3Score = 0;
+
+            for (let i = 0; i < 80; i++) {
+                const ans = userAnswers[i];
+                if (ans === null) {
+                    totalUnanswered++;
+                } else if (ans.isCorrect) {
+                    totalCorrect++;
+                    if (i < 28) ch1Score++;
+                    else if (i < 54) ch2Score++;
+                    else ch3Score++;
+                } else {
+                    totalWrong++;
+                }
+            }
+
+            const percentage = ((totalCorrect / 80) * 100).toFixed(1);
+
+            // Populate Results UI
+            document.getElementById("scoreDisplay").textContent = totalCorrect;
+            document.getElementById("scorePercentage").textContent = `${percentage}%`;
+            document.getElementById("resStudentName").textContent = studentData.name;
+            document.getElementById("resStudentMeta").textContent = `ID: ${studentData.id} | ክፍል፡ ${studentData.section}`;
+
+            // Calculate Elapsed Time
+            const elapsedSeconds = Math.max(0, (2 * 3600 + 30 * 60) - totalSecondsRemaining);
+            const hrs = Math.floor(elapsedSeconds / 3600);
+            const mins = Math.floor((elapsedSeconds % 3600) / 60);
+            const secs = elapsedSeconds % 60;
+            document.getElementById("resTimeTaken").textContent = `${hrs} ሰዓት ከ ${mins} ደቂቃ ${secs} ሰከንድ`;
+
+            document.getElementById("resCorrectCount").textContent = totalCorrect;
+            document.getElementById("resWrongCount").textContent = totalWrong;
+            document.getElementById("resUnansweredCount").textContent = totalUnanswered;
+
+            // Chapter analytics
+            document.getElementById("ch1Stats").textContent = `${ch1Score}/28 (${Math.round((ch1Score / 28) * 100)}%)`;
+            document.getElementById("ch1Bar").style.width = `${(ch1Score / 28) * 100}%`;
+
+            document.getElementById("ch2Stats").textContent = `${ch2Score}/26 (${Math.round((ch2Score / 26) * 100)}%)`;
+            document.getElementById("ch2Bar").style.width = `${(ch2Score / 26) * 100}%`;
+
+            document.getElementById("ch3Stats").textContent = `${ch3Score}/26 (${Math.round((ch3Score / 26) * 100)}%)`;
+            document.getElementById("ch3Bar").style.width = `${(ch3Score / 26) * 100}%`;
+
+            // Switch Screen
+            document.getElementById("examSection").classList.add("hidden");
+            document.getElementById("resultsSection").classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            showToast("ፈተናው በስኬት ተጠናቋል! ውጤትዎ ተሰልቷል።", "success");
+        }
+
+        // Trigger Finish Dialog Confirmation
+        document.getElementById("btnFinishExam").addEventListener("click", () => {
+            const unanswered = userAnswers.filter(a => a === null).length;
+            if (unanswered > 0) {
+                const confirmed = window.confirm(`ማስጠንቀቂያ፦ ገና ያልመለሷቸው ${unanswered} ጥያቄዎች አሉ። በእርግጥ ፈተናውን አጠናቀው ማስረከብ ይፈልጋሉ?`);
+                if (!confirmed) return;
+            }
+            finalizeQuiz();
+        });
+
+        // Email Submission Feature (mailto payload generation)
+        function generateEmailReport() {
+            let totalCorrect = userAnswers.filter(a => a && a.isCorrect).length;
+            let totalWrong = userAnswers.filter(a => a && !a.isCorrect).length;
+            let totalUnanswered = userAnswers.filter(a => a === null).length;
+            const percentage = ((totalCorrect / 80) * 100).toFixed(1);
+
+            const subject = encodeURIComponent(`Grade 6 Math Exam Official Result: ${studentData.name} (ID: ${studentData.id})`);
+            
+            let bodyText = `የኢትዮጵያ ሥርዓተ-ትምህርት 6ኛ ክፍል ሒሳብ ማጠቃለያ ፈተና ውጤት ሪፖርት\n`;
+            bodyText += `========================================================\n\n`;
+            bodyText += `የተማሪው/ዋ ሙሉ ስም: ${studentData.name}\n`;
+            bodyText += `የመለያ ቁጥር (ID): ${studentData.id}\n`;
+            bodyText += `ክፍል / ሴክሽን: ${studentData.section}\n`;
+            bodyText += `የፈተና ቀንና ሰዓት: ${new Date().toLocaleString('en-US')}\n\n`;
+            bodyText += `የፈተና ውጤት ማጠቃለያ:\n`;
+            bodyText += `--------------------------------------------------------\n`;
+            bodyText += `ጠቅላላ ውጤት: ${totalCorrect} / 80 (${percentage}%)\n`;
+            bodyText += `ትክክለኛ መልሶች: ${totalCorrect}\n`;
+            bodyText += `የተሳሳቱ መልሶች: ${totalWrong}\n`;
+            bodyText += `ያልተመለሱ ጥያቄዎች: ${totalUnanswered}\n\n`;
+            bodyText += `የምዕራፎች ዝርዝር ትንተና:\n`;
+            
+            let ch1 = userAnswers.slice(0, 28).filter(a => a && a.isCorrect).length;
+            let ch2 = userAnswers.slice(28, 54).filter(a => a && a.isCorrect).length;
+            let ch3 = userAnswers.slice(54, 80).filter(a => a && a.isCorrect).length;
+
+            bodyText += `• ምዕራፍ 1 (የሙሉ ቁጥሮች ተካፋይነት): ${ch1} / 28\n`;
+            bodyText += `• ምዕራፍ 2 (ክፍልፋዮች፣ አስርዮሾች እና መቶኛዎች): ${ch2} / 26\n`;
+            bodyText += `• ምዕራፍ 3 (ክፍልፋዮች፣ አስርዮሾችና አራቱ ስሌቶች): ${ch3} / 26\n\n`;
+            bodyText += `የመምህሩ ኢሜይል: ${TEACHER_EMAIL}\n`;
+            bodyText += `ሪፖርቱ በራስ-ሰር በፈተና መተግበሪያው የተዘጋጀ ነው።\n`;
+
+            return {
+                subject: subject,
+                body: encodeURIComponent(bodyText),
+                rawText: bodyText
+            };
+        }
+
+        // Direct Email Sender
+        document.getElementById("btnSendEmailDirect").addEventListener("click", () => {
+            const report = generateEmailReport();
+            const mailtoUrl = `mailto:${TEACHER_EMAIL}?subject=${report.subject}&body=${report.body}`;
+            
+            // Trigger mailto link
+            window.location.href = mailtoUrl;
+
+            const status = document.getElementById("emailStatusMsg");
+            status.textContent = `የኢሜይል መላኪያ መተግበሪያዎ ተከፍቷል! ወደ ${TEACHER_EMAIL} መላኩን ያረጋግጡ።`;
+            status.classList.remove("hidden");
+            showToast(`የፈተና ውጤት ለ ${TEACHER_EMAIL} በመላክ ላይ...`, "success");
+        });
+
+        // Copy Text Report to Clipboard
+        document.getElementById("btnCopyReport").addEventListener("click", () => {
+            const report = generateEmailReport();
+            const tempInput = document.createElement("textarea");
+            tempInput.value = report.rawText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast("የፈተናው ዝርዝር ሪፖርት ወደ clipboard ተቀድቷል!", "success");
+        });
+
+        // Review Questions button
+        document.getElementById("btnReviewAll").addEventListener("click", () => {
+            reviewMode = true;
+            document.getElementById("resultsSection").classList.add("hidden");
+            document.getElementById("examSection").classList.remove("hidden");
+            currentIndex = 0;
+            renderCurrentQuestion();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showToast("የመልስ መከለሻ ሁነታ ላይ ነዎት። ሁሉንም ጥያቄዎችና ማብራሪያዎች ማየት ይችላሉ።", "info");
+        });
+
+        // Print Report
+        document.getElementById("btnPrintReport").addEventListener("click", () => {
+            window.print();
+        });
+
+        // Timer Countdown Routine
+        function startTimer() {
+            const timerElem = document.getElementById("timerDisplay");
+            examTimer = setInterval(() => {
+                if (totalSecondsRemaining <= 0) {
+                    clearInterval(examTimer);
+                    timerElem.textContent = "00:00:00";
+                    showToast("የፈተናው ጊዜ ተጠናቋል! መልሶችዎ እየተሰሉ ነው...", "error");
+                    finalizeQuiz();
+                    return;
+                }
+                totalSecondsRemaining--;
+                const hrs = Math.floor(totalSecondsRemaining / 3600);
+                const mins = Math.floor((totalSecondsRemaining % 3600) / 60);
+                const secs = totalSecondsRemaining % 60;
+
+                timerElem.textContent = 
+                    `${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+                
+                // Alert in last 5 minutes
+                if (totalSecondsRemaining === 300) {
+                    showToast("ትኩረት፦ የፈተናው 5 ደቂቃ ብቻ ቀርቷል!", "error");
+                }
+            }, 1000);
+        }
+
+        // Exam Registration and Start Handler
+        document.getElementById("startExamForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("studentName").value.trim();
+            const id = document.getElementById("studentId").value.trim();
+            const section = document.getElementById("studentSection").value.trim();
+
+            if (!name || !id || !section) {
+                showToast("እባክዎ ሁሉንም የተማሪ መለያ ክፍተቶች በትክክል ይሙሉ!", "error");
+                return;
+            }
+
+            studentData.name = name;
+            studentData.id = id;
+            studentData.section = section;
+            studentData.startTime = new Date();
+
+            // Setup Sidebar Info
+            document.getElementById("sidebarStudentName").textContent = name;
+            document.getElementById("sidebarStudentMeta").textContent = `ID: ${id} | ክፍል፡ ${section}`;
+
+            // Switch Screen
+            document.getElementById("registrationSection").classList.add("hidden");
+            document.getElementById("examSection").classList.remove("hidden");
+            document.getElementById("headerStats").classList.remove("hidden");
+            document.getElementById("headerStats").classList.add("flex");
+
+            buildGridNavigator();
+            renderCurrentQuestion();
+            startTimer();
+
+            showToast(`እንኳን ደህና መጣህ/ሽ ${name}! ፈተናው ተጀምሯል።`, "success");
+        });
+    </script>
+</body>
+</html>
